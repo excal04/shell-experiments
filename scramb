@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# scramb: sentence scrambler
+# Random script that popped out of my head
+# inspired by how internet comments are scrambled up
+# which end up even funnier. Script takes the sentence as parameter
+
+numWords=$#
+scrambIndex=()
+
+for param; do
+    while [[ true ]]; do
+        index=$(( $RANDOM % $# ))
+        if [[ ${scrambIndex[$index]} == "" ]]; then
+            break
+        fi
+    done
+
+    scrambIndex[$index]="$param"
+done
+
+echo "${scrambIndex[@]}"
